@@ -1,0 +1,25 @@
+
+#################################################################
+##### Use vim keybinding for terminal -e for default emacs 
+#################################################################
+#set -o vi
+#export EDITOR=vim
+
+alias vim="vimx -v"
+
+source ~/dotfiles/fzf-git.sh
+
+export JAVA_HOME=/usr/local/jdk-21.0.5
+export DOCKER_HOST=unix:///run/user/1000/docker.sock
+
+
+
+JAVA_PATH=$JAVA_HOME/bin
+GO_PATH=/usr/local/go/bin
+MVN_PATH=/usr/local/apache-maven-3.9.9/bin
+GRADLE_PATH=/usr/local/gradle-8.13/bin
+IDEA_PATH=/var/lib/snapd/snap/intellij-idea-community/current/bin
+LOCAL_BIN=/.local/bin
+
+export PATH=$PATH:$GO_PATH:$MVN_PATH:$IDEA_PATH:$JAVA_PATH:$GRADLE_PATH:$LOCAL_BIN
+
