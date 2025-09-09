@@ -15,7 +15,7 @@ $
 
 # Command Line History (newest to oldest):
 :wq
-|2,0,1756654562,,"wq"
+|2,0,1757453207,,"wq"
 :w
 |2,0,1756653896,,"w"
 
@@ -24,37 +24,42 @@ $
 # Expression History (newest to oldest):
 
 # Input Line History (newest to oldest):
+@.gitignore
+|2,3,1757453184,,".gitignore"
 
 # Debug Line History (newest to oldest):
 
 # Registers:
+"0	LINE	0
+	
+|3,0,0,1,1,0,1757453178,""
 ""1	LINE	0
 	
-|3,1,1,1,1,0,1756652890,""
+|3,1,1,1,1,0,1757453204,""
 "2	LINE	0
 	
-|3,0,2,1,1,0,1756652883,""
+|3,0,2,1,1,0,1757453202,""
 "3	LINE	0
 	
-|3,0,3,1,1,0,1756652882,""
+|3,0,3,1,1,0,1757453202,""
 "4	LINE	0
 	
-|3,0,4,1,1,0,1756652857,""
+|3,0,4,1,1,0,1757453202,""
 "5	LINE	0
-	#set window renumber on
-|3,0,5,1,1,0,1756652828,"#set window renumber on"
+	
+|3,0,5,1,1,0,1756652890,""
 "6	LINE	0
 	
-|3,0,6,1,1,0,1756652795,""
+|3,0,6,1,1,0,1756652883,""
 "7	LINE	0
 	
-|3,0,7,1,1,0,1756652794,""
+|3,0,7,1,1,0,1756652882,""
 "8	LINE	0
 	
-|3,0,8,1,1,0,1756652793,""
+|3,0,8,1,1,0,1756652857,""
 "9	LINE	0
-	
-|3,0,9,1,1,0,1756652787,""
+	#set window renumber on
+|3,0,9,1,1,0,1756652828,"#set window renumber on"
 "-	CHAR	0
 	#copy-mode vi
 |3,0,36,0,1,0,1756652884,"#copy-mode vi"
@@ -62,12 +67,52 @@ $
 # global variables:
 
 # File marks:
-'0  5  80  ~/dotfiles/.tmux.conf
-|4,48,5,80,1756654562,"~/dotfiles/.tmux.conf"
-'1  5  80  ~/dotfiles/.tmux.conf
-|4,49,5,80,1756654562,"~/dotfiles/.tmux.conf"
+'0  1  0  ~/dotfiles/.gitignore
+|4,48,1,0,1757453207,"~/dotfiles/.gitignore"
+'1  1  0  ~/dotfiles/.gitignore
+|4,49,1,0,1757453207,"~/dotfiles/.gitignore"
+'2  5  80  ~/dotfiles/.tmux.conf
+|4,50,5,80,1756654562,"~/dotfiles/.tmux.conf"
+'3  5  80  ~/dotfiles/.tmux.conf
+|4,51,5,80,1756654562,"~/dotfiles/.tmux.conf"
 
 # Jumplist (newest first):
+-'  1  0  ~/dotfiles/.gitignore
+|4,39,1,0,1757453207,"~/dotfiles/.gitignore"
+-'  1  0  ~/dotfiles/.gitignore
+|4,39,1,0,1757453207,"~/dotfiles/.gitignore"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  67  0  ~/dotfiles
+|4,39,67,0,1757453103,"~/dotfiles"
+-'  67  0  ~/dotfiles
+|4,39,67,0,1757453103,"~/dotfiles"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  81  0  ~/dotfiles
+|4,39,81,0,1757453096,"~/dotfiles"
+-'  81  0  ~/dotfiles
+|4,39,81,0,1757453096,"~/dotfiles"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  95  0  ~/dotfiles
+|4,39,95,0,1757453076,"~/dotfiles"
+-'  95  0  ~/dotfiles
+|4,39,95,0,1757453076,"~/dotfiles"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
 -'  5  80  ~/dotfiles/.tmux.conf
 |4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
 -'  5  80  ~/dotfiles/.tmux.conf
@@ -76,12 +121,38 @@ $
 |4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
 -'  1  55  ~/dotfiles/.tmux.conf
 |4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  2  25  ~/dotfiles/.tmux.conf
+|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
+-'  2  25  ~/dotfiles/.tmux.conf
+|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
+-'  2  25  ~/dotfiles/.tmux.conf
+|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
+-'  2  25  ~/dotfiles/.tmux.conf
+|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
 -'  2  25  ~/dotfiles/.tmux.conf
 |4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
 -'  2  25  ~/dotfiles/.tmux.conf
 |4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
 
 # History of marks within files (newest to oldest):
+
+> ~/dotfiles/.gitignore
+	*	1757453204	0
+	"	1	0
+	^	6	8
+	.	1	0
+	+	1	0
+	+	1	9
+	+	6	7
+	+	1	0
 
 > ~/dotfiles/.tmux.conf
 	*	1756653900	0

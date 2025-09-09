@@ -1,0 +1,6 @@
+netrwbook
+.netrwhist
+.viminfo
+autoload/
+plugged/
+undodir/
