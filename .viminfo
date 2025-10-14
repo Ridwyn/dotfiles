@@ -9,13 +9,13 @@
 
 
 # hlsearch on (H) or off (h):
-~h
+~H
 # Last Substitute String:
 $
 
 # Command Line History (newest to oldest):
 :q
-|2,0,1757453264,,"q"
+|2,0,1757711869,,"q"
 :G status
 |2,0,1757453254,,"G status"
 :G
@@ -38,7 +38,7 @@ $
 # Registers:
 ""0	LINE	0
 	
-|3,1,0,1,1,0,1757453261,""
+|3,1,0,1,1,0,1757453314,""
 "1	LINE	0
 	
 |3,0,1,1,1,0,1757453204,""
@@ -73,14 +73,14 @@ $
 # global variables:
 
 # File marks:
-'0  1  0  fugitive:///home/ridwyn/dotfiles/.git//
-|4,48,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
-'1  1  0  fugitive:///home/ridwyn/dotfiles/.git//
-|4,49,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
-'2  1  0  ~/dotfiles/.gitignore
-|4,50,1,0,1757453207,"~/dotfiles/.gitignore"
-'3  1  0  ~/dotfiles/.gitignore
-|4,51,1,0,1757453207,"~/dotfiles/.gitignore"
+'0  1  0  ~/dotfiles/.gitignore
+|4,48,1,0,1757711869,"~/dotfiles/.gitignore"
+'1  1  0  ~/dotfiles/.gitignore
+|4,49,1,0,1757711869,"~/dotfiles/.gitignore"
+'2  1  0  fugitive:///home/ridwyn/dotfiles/.git//
+|4,50,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
+'3  1  0  fugitive:///home/ridwyn/dotfiles/.git//
+|4,51,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
 '4  1  0  ~/dotfiles/.gitignore
 |4,52,1,0,1757453207,"~/dotfiles/.gitignore"
 '5  1  0  ~/dotfiles/.gitignore
@@ -89,12 +89,24 @@ $
 |4,54,1,0,1757453207,"~/dotfiles/.gitignore"
 '7  1  0  ~/dotfiles/.gitignore
 |4,55,1,0,1757453207,"~/dotfiles/.gitignore"
-'8  5  80  ~/dotfiles/.tmux.conf
-|4,56,5,80,1756654562,"~/dotfiles/.tmux.conf"
-'9  5  80  ~/dotfiles/.tmux.conf
-|4,57,5,80,1756654562,"~/dotfiles/.tmux.conf"
+'8  1  0  ~/dotfiles/.gitignore
+|4,56,1,0,1757453207,"~/dotfiles/.gitignore"
+'9  1  0  ~/dotfiles/.gitignore
+|4,57,1,0,1757453207,"~/dotfiles/.gitignore"
 
 # Jumplist (newest first):
+-'  1  0  ~/dotfiles/.gitignore
+|4,39,1,0,1757711869,"~/dotfiles/.gitignore"
+-'  1  0  ~/dotfiles/.gitignore
+|4,39,1,0,1757711869,"~/dotfiles/.gitignore"
+-'  1  0  fugitive:///home/ridwyn/dotfiles/.git//
+|4,39,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
+-'  1  0  fugitive:///home/ridwyn/dotfiles/.git//
+|4,39,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
+-'  1  0  fugitive:///home/ridwyn/dotfiles/.git//
+|4,39,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
+-'  1  0  fugitive:///home/ridwyn/dotfiles/.git//
+|4,39,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
 -'  1  0  fugitive:///home/ridwyn/dotfiles/.git//
 |4,39,1,0,1757453264,"fugitive:///home/ridwyn/dotfiles/.git//"
 -'  1  0  fugitive:///home/ridwyn/dotfiles/.git//
@@ -119,6 +131,22 @@ $
 |4,39,11,0,1757453178,"~/dotfiles/.vim"
 -'  11  0  ~/dotfiles/.vim
 |4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
+-'  11  0  ~/dotfiles/.vim
+|4,39,11,0,1757453178,"~/dotfiles/.vim"
 -'  67  0  ~/dotfiles
 |4,39,67,0,1757453103,"~/dotfiles"
 -'  67  0  ~/dotfiles
@@ -131,10 +159,42 @@ $
 |4,39,136,0,1757453101,"~/dotfiles/.vim"
 -'  136  0  ~/dotfiles/.vim
 |4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
+-'  136  0  ~/dotfiles/.vim
+|4,39,136,0,1757453101,"~/dotfiles/.vim"
 -'  81  0  ~/dotfiles
 |4,39,81,0,1757453096,"~/dotfiles"
 -'  81  0  ~/dotfiles
 |4,39,81,0,1757453096,"~/dotfiles"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
+-'  178  0  ~/dotfiles/.vim
+|4,39,178,0,1757453090,"~/dotfiles/.vim"
 -'  178  0  ~/dotfiles/.vim
 |4,39,178,0,1757453090,"~/dotfiles/.vim"
 -'  178  0  ~/dotfiles/.vim
@@ -163,6 +223,38 @@ $
 |4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
 -'  5  80  ~/dotfiles/.tmux.conf
 |4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
+-'  5  80  ~/dotfiles/.tmux.conf
+|4,39,5,80,1756654562,"~/dotfiles/.tmux.conf"
 -'  1  55  ~/dotfiles/.tmux.conf
 |4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
 -'  1  55  ~/dotfiles/.tmux.conf
@@ -179,39 +271,47 @@ $
 |4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
 -'  1  55  ~/dotfiles/.tmux.conf
 |4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
--'  2  25  ~/dotfiles/.tmux.conf
-|4,39,2,25,1756652805,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
+-'  1  55  ~/dotfiles/.tmux.conf
+|4,39,1,55,1756652843,"~/dotfiles/.tmux.conf"
 
 # History of marks within files (newest to oldest):
 
-> fugitive:///home/ridwyn/dotfiles/.git//cc58ee1b4b695bda8e581e1eab05602ce8b304d0
-	*	1757453242	0
-	"	7	0
-	.	1	0
-	+	1	0
-
 > ~/dotfiles/.gitignore
-	*	1757453204	0
+	*	1757453318	0
 	"	1	0
 	^	6	8
 	.	1	0
 	+	1	0
 	+	1	9
 	+	6	7
+	+	1	0
+
+> fugitive:///home/ridwyn/dotfiles/.git//cc58ee1b4b695bda8e581e1eab05602ce8b304d0
+	*	1757453242	0
+	"	7	0
+	.	1	0
 	+	1	0
 
 > ~/dotfiles/.tmux.conf
