@@ -231,7 +231,6 @@ return {
                 vim.lsp.enable(lsp)
             end
 
-            -- Specific config for lua to include vim as global variable
             vim.lsp.config('lua_ls',{
                 flags = flags,
                 on_attach = on_attach,
@@ -250,6 +249,56 @@ return {
                 },
             })
             vim.lsp.enable('lua_ls')
+
+            -- Specific config for lua to include vim as global variable
+            vim.lsp.config('jdtls',{
+                flags = flags,
+                on_attach = on_attach,
+                settings = {
+                    java = {
+                        signatureHelp = { enabled = true },
+                        completion = {
+                            favoriteStaticMembers = {},
+                            filteredTypes = {},
+                        },
+                        sources = {
+                            organizeImports = {
+                                starThreshold = 9999,
+                                staticStarThreshold = 9999,
+                            },
+                        },
+                        codeGeneration = {
+                            toString = {
+                                template = "${object.className}{${member.name()}=${member.value}, ${otherMembers}}",
+                            },
+                            useBlocks = true,
+                        },
+                        -- Fernflower configuration
+                        decompiler = {
+                            enabled = true,          -- Enable the decompiler
+                            javaDecompilerPath = "/usr/share/java/fernflower.jar", -- Path to Fernflower
+                        },
+                        configuration = {
+                            runtimes = {
+                                {
+                                    name = "JavaSE-21",
+                                    path = "/usr/lib/jvm/java-21-openjdk", -- Specify Custom Path Here should point to root of jdk 
+                                },
+                                {
+                                    name = "JavaSE-25",
+                                    path = "/usr/lib/jvm/java-25-openjdk",
+                                    default = true,
+                                },
+                            },
+                            libraries = {
+                                -- Add the .m2 directory for Maven dependencies
+                                os.getenv("HOME") .. "/.m2/repository",  -- Maven local repository path
+                            },
+                        },
+                    },
+                },
+            })
+            vim.lsp.enable('jdtls')
         end,
     },
 
