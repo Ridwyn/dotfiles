@@ -8,8 +8,19 @@ map({ "i"},  "<C-k>", "<Esc>:m .-2<CR>==gi", { desc = "Move Line UP in normal mo
 map({ "v"},  "<C-j>", "<Esc>:m '>+1<CR>gv=gv", { desc = "Move Line DOWN in normal mode"})
 map({ "v"},  "<C-k>", "<Esc>:m '>-2<CR>gv=gv", { desc = "Move Line UP in normal mode"})
 map({ "i"},  "jj", "<Esc>", { noremap = true, silent=true, desc = "Escape when jj pressed in insert mode"})
-map({ "n"},  "<leader>e", ":e#<CR>", { noremap = true, silent=true, desc = "Alternate files"})
+map({ "n"},  "<leader>a", ":e#<CR>", { noremap = true, silent=true, desc = "Alternate files"})
+map({ "n"},  "<leader>e", ":Explore<CR>", { noremap = true, silent=true, desc = "Explore netrw"})
+map({ "t"},  "<Esc>", "<C-\\><C-n>", { noremap = true, silent=true, desc = "Escape insert in terminal mode"})
 
+
+
+-- Easily split windows
+vim.keymap.set("n", "<leader>wv", ":vsplit<cr>", { desc = "[W]indow Split [V]ertical" })
+vim.keymap.set("n", "<leader>wh", ":split<cr>", { desc = "[W]indow Split [H]orizontal" })
+
+
+-- Remove search highlights after searching
+vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>", { desc = "Remove search highlights" })
 
 
 
