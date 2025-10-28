@@ -130,7 +130,7 @@ function M.setup_jdtls()
 
     local lsp_capabilities = vim.lsp.protocol.make_client_capabilities()
 
-    for k,v in pairs(lsp_capabilities) do capabilities[k] = v end
+   for k,v in pairs(lsp_capabilities) do capabilities[k] = v end
 
 
     local jdtls_java_executable =  '/usr/lib/jvm/java-25-openjdk/bin/java'
@@ -248,7 +248,7 @@ function M.setup_jdtls()
     }
 
     -- Function that will be ran once the language server is attached
-    local on_attach = function(_, bufnr)
+    local on_attach = function(client, bufnr)
         -- Map the Java specific key mappings once the server is attached
         java_keymaps()
 
@@ -261,10 +261,13 @@ function M.setup_jdtls()
         -- Unfortunately I have not found an elegant way to ensure this works 100%
         require('jdtls.dap').setup_dap_main_class_configs()
         -- Enable jdtls commands to be used in Neovim
-        require 'jdtls.setup'.add_commands()
+        require('jdtls.setup').add_commands()
         -- Refresh the codelens
         -- Code lens enables features such as code reference counts, implemenation counts, and more.
         vim.lsp.codelens.refresh()
+
+        -- Disable lsp semantic highlighting in favor of treesitter for java
+        client.server_capabilities.semanticTokensProvider = nil
 
         -- Setup a function that automatically runs every time a java file is saved to refresh the code lens
         vim.api.nvim_create_autocmd("BufWritePost", {
