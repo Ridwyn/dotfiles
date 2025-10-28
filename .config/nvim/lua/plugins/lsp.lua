@@ -105,7 +105,13 @@ return {
             })
             vim.lsp.enable('lua_ls')
 
-            --vim.lsp.config('jdtls', require('plugins.jdtls').config_)
+            local jdtls_config = require('config.jdtls').setup_jdtls()
+            vim.lsp.config('jdtls', {
+                cmd = jdtls_config.cmd,
+                on_attach = jdtls_config.on_attach,
+                init_options = jdtls_config.init_options,
+            })
+
             vim.lsp.enable('jdtls')
             ---- Specific config for lua to include vim as global variable
             --vim.lsp.config('jdtls',{

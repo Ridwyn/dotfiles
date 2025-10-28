@@ -17,14 +17,36 @@ local function get_bundles()
     -- Obtain the full path to the directory where Mason has downloaded the Java Debug Adapter binaries
     local java_debug_path = vim.fn.stdpath("data") .. "/mason/packages/java-debug-adapter"
 
-    local bundles = {
-        vim.fn.glob(java_debug_path .. "/extension/server/com.microsoft.java.debug.plugin-*.jar", 0, 1)[1]
-    }
+    --No LSP client found that supports resolving possible test cases.
+    --Did you add the JAR files of vscode-java-test to `config.init_options.bundles`?
+    -- /home/ridwyn/.local/share/nvim/mason/packages/java-debug-adapter
 
     -- Obtain the full path to the directory where Mason has downloaded the Java Test binaries
     local java_test_path = vim.fn.stdpath("data") .. "/mason/packages/java-test"
-     -- Add all of the Jars for running tests in debug mode to the bundles list
-     vim.list_extend(bundles, vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar", 0, 1)[1], "\n"))
+
+
+    -- This bundles definition is the same as in the previous section (java-debug installation)
+    local bundles = {
+        vim.fn.glob(java_debug_path.. "/extension/server/com.microsoft.java.debug.plugin-*.jar", 1)
+    }
+
+
+    -- This is the new part
+    local java_test_bundles = vim.split(vim.fn.glob(java_test_path .. "/extension/server/*.jar", 1), "\n")
+    local excluded = {
+        "com.microsoft.java.test.runner-jar-with-dependencies.jar",
+        "jacocoagent.jar",
+    }
+    for _, java_test_jar in ipairs(java_test_bundles) do
+        local fname = vim.fn.fnamemodify(java_test_jar, ":t")
+        if not vim.tbl_contains(excluded, fname) then
+            table.insert(bundles, java_test_jar)
+        end
+    end
+    -- End of the new part
+
+
+
 
      return bundles
 end
@@ -51,6 +73,7 @@ local function java_keymaps()
     -- Allow yourself/register to run JdtShell as a Vim command
     vim.cmd("command! -buffer JdtJshell lua require('jdtls').jshell()")
 
+
     -- Set a Vim motion to <Space> + <Shift>J + o to organize imports in normal mode
     vim.keymap.set('n', '<leader>Jo', "<Cmd> lua require('jdtls').organize_imports()<CR>", { desc = "[J]ava [O]rganize Imports" })
     -- Set a Vim motion to <Space> + <Shift>J + v to extract the code under the cursor to a variable
@@ -69,9 +92,21 @@ local function java_keymaps()
     vim.keymap.set('n', '<leader>JT', "<Cmd> lua require('jdtls').test_class()<CR>", { desc = "[J]ava [T]est Class" })
     -- Set a Vim motion to <Space> + <Shift>J + u to update the project configuration
     vim.keymap.set('n', '<leader>Ju', "<Cmd> JdtUpdateConfig<CR>", { desc = "[J]ava [U]pdate Config" })
+
+    -- Set a Vim motion to gd  to jump to definition 
+    local opts = { noremap=true, silent=true }
+    vim.keymap.set('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>',     vim.tbl_extend('keep',{ desc = "Jump to Definition" }, opts))
+    vim.keymap.set('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>',    vim.tbl_extend('keep',{ desc = "Jump to Declaration" }, opts))
+    vim.keymap.set('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', vim.tbl_extend('keep',{ desc = "Jump to Implementation" }, opts))
+    vim.keymap.set('n', 'gr', '<Cmd>lua vim.lsp.buf.references()<CR>',     vim.tbl_extend('keep',{ desc = "Find Refereneces" }, opts))
+    vim.keymap.set('n', 'K',  '<Cmd>lua vim.lsp.buf.hover()<CR>',          vim.tbl_extend('keep',{ desc = "Trigger Lsp Hover" }, opts))
 end
 
-function setup_jdtls()
+
+
+local M = {}
+
+function M.setup_jdtls()
     -- Get access to the jdtls plugin and all of its functionality
 
     -- Get the paths to the jdtls jar, operating specific configuration directory, and lombok jar
@@ -98,25 +133,14 @@ function setup_jdtls()
     for k,v in pairs(lsp_capabilities) do capabilities[k] = v end
 
 
+    local jdtls_java_executable =  '/usr/lib/jvm/java-25-openjdk/bin/java'
+
     -- Set the command that starts the JDTLS language server jar
     local cmd = {
-        'java',
-        '-Declipse.application=org.eclipse.jdt.ls.core.id1',
-        '-Dosgi.bundles.defaultStartLevel=4',
-        '-Declipse.product=org.eclipse.jdt.ls.core.product',
-        '-Dlog.protocol=true',
-        '-Dlog.level=ALL',
-        '-Xmx1g',
-        '--add-modules=ALL-SYSTEM',
-        '--add-opens', 'java.base/java.util=ALL-UNNAMED',
-        '--add-opens', 'java.base/java.lang=ALL-UNNAMED',
-        '-javaagent:' .. lombok,
-        '-jar',
-        launcher,
-        '-configuration',
-        os_config,
-        '-data',
-        workspace_dir
+        'jdtls',
+        '--java-executable', jdtls_java_executable,
+        '--jvm-arg=-javaagent:' .. lombok,
+        '-data ' .. workspace_dir,
     }
 
      -- Configure settings in the JDTLS server
@@ -173,10 +197,10 @@ function setup_jdtls()
                 },
                 -- Set the order in which the language server should organize imports
                 importOrder = {
-                    "java",
-                    "jakarta",
-                    "javax",
                     "com",
+                    "jakarta",
+                    "java",
+                    "javax",
                     "org",
                 }
             },
@@ -250,35 +274,18 @@ function setup_jdtls()
             end
         })
     end
-
     -- Create the configuration table for the start or attach function
     local config = {
         cmd = cmd,
-        --root_dir = root_dir,
         settings = settings,
         capabilities = capabilities,
         init_options = init_options,
-        on_attach = on_attach
+        on_attach = on_attach,
+        workspace_dir = workspace_dir
     }
 
     return config
 
 end
 
-return {
-    -- Require to link vim lsp client to servers
-    "neovim/nvim-lspconfig",
-    opts = {
-        library = {
-            -- Load luvit types when the `vim.uv` word is found
-            { path = "${3rd}/luv/library", words = { "vim%.uv" } },
-        },
-    },
-    config_ = setup_jdtls(),
-    config = function ()
-        vim.lsp.config('jdtls', {setup_jdtls()})
-        vim.lsp.enable('jdtls')
-    end
-
-}
-
+return M
