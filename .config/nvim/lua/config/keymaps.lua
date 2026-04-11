@@ -35,7 +35,6 @@ function OpenUrlUnderCursor()
     end
 end
 
-vim.api.nvim_set_keymap('n', '<leader>o', ':lua OpenUrlUnderCursor()<CR>', { noremap = true, silent = true })
 
 -- Netrw show marked files list
 --map({ "n" },   "<leader>m", ":echo netrw#Expose("netrwmarkfilelist")<CR>", { desc = "Netrw list bookmarked files"})

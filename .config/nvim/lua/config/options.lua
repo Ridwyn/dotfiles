@@ -16,6 +16,8 @@ opt.hlsearch = true
 opt.smartcase = true
 opt.clipboard = 'unnamedplus'
 
+vim.opt.path:append { '**' }
+
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
 
