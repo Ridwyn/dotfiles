@@ -67,6 +67,13 @@ endfunction
 " Command to call the functiot
 command! -nargs=+ RTab call OutputToTab(<q-args>)
 
+
+function Wildignoreheavy()
+  set wildignore=
+  set wildignore+=**/node_modules/*,**/target/*
+endfunction
+command! WildIgnoreHeavy call Wildignoreheavy()
+
 "
 " Example usage:
 " :Rtab MyTab ls

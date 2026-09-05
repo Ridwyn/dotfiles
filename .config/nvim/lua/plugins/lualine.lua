@@ -1,3 +1,6 @@
+local function get_current_dir() 
+  return vim.fn.fnamemodify(vim.fn.getcwd(), ":t") 
+end
 
 return {
     --Require for improved nvim statusline
@@ -39,11 +42,11 @@ return {
 				-- display the current mode in section a
 				lualine_a = { "mode" },
 				-- display the current git branch, git differences, and any code diagnostics in section b
-				lualine_b = { "branch", "diff", "diagnostics" },
+				lualine_b = { "branch", get_current_dir },
 				-- display the filename in section c
 				lualine_c = { "filename" },
 				-- display the file encoding type, os, and filetype in section x
-				lualine_x = { "encoding", "fileformat", "filetype" },
+				lualine_x = { "encoding", "fileformat", "filetype", "lsp_status" },
 				-- display where you are at in the file in section y
 				lualine_y = { "progress" },
 				-- display exact location of the cursor in section z
