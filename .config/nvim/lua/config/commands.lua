@@ -18,8 +18,6 @@ local function create_terminal_and_sendcmd(cmd)
 	vim.fn.chansend(vim.b[buf].terminal_job_id, cmd .. "\n")
 end
 --Term command cleaner way to :sp | term
---TODO: does not yet support utf8 instead of raw slicing ofchar bytes
---local str = "👋hello💥"
 vim.api.nvim_create_user_command("Term", function(cmd_args)
 	local args = vim.trim(cmd_args.args)
 
@@ -29,7 +27,8 @@ vim.api.nvim_create_user_command("Term", function(cmd_args)
 			vim.cmd('echohl ErrorMsg | echo " mising closing \'" | echohl None')
       return
 		else
-      local cleancmd = args:sub(2, -2)
+      -- this is safe todo since ' is exactly 1 byte so we can safely chop 1 byte on both ends
+      local cleancmd = args:match(2, -2)
 			create_terminal_and_sendcmd(cleancmd)
       return
 		end
