@@ -12,6 +12,31 @@ vim.api.nvim_create_user_command("LspLog", function(_)
 	vim.cmd("e " .. vim.lsp.log.get_filename())
 end, { nargs = "*" })
 
+local function create_terminal_and_sendcmd(cmd)
+	local buf = vim.api.nvim_create_buf(false, true)
+	vim.cmd("split | b" .. buf .. " | terminal")
+	vim.fn.chansend(vim.b[buf].terminal_job_id, cmd .. "\n")
+end
+--Term command cleaner way to :sp | term
+--TODO: does not yet support utf8 instead of raw slicing ofchar bytes
+--local str = "👋hello💥"
+vim.api.nvim_create_user_command("Term", function(cmd_args)
+	local args = vim.trim(cmd_args.args)
+
+	local cmd = "mvn " .. args
+	if args:sub(1, 1) == "'" then
+		if args:sub(args:len()) ~= "'" then
+			vim.cmd('echohl ErrorMsg | echo " mising closing \'" | echohl None')
+      return
+		else
+      local cleancmd = args:sub(2, -2)
+			create_terminal_and_sendcmd(cleancmd)
+      return
+		end
+	end
+
+	create_terminal_and_sendcmd(cmd)
+end, { nargs = "*" })
 
 --Wipe buffer not backed by file on disk
 vim.api.nvim_create_user_command("CleanBuffers", function(_)
@@ -28,18 +53,17 @@ vim.api.nvim_create_user_command("CleanBuffers", function(_)
 		end
 	end
 
-  for _, buf in ipairs(buffers) do
-    -- Whitelist of buftypes to avoid wiping
-    local whitelist_buf = {"terminal"}
-    local foundInWhitelist = vim.fn.index(whitelist_buf, buf.buftype)
-    local filePath = vim.fn.fnamemodify(buf.name, ":p")
-    local isOndisk = vim.uv.fs_stat(filePath)
-    if not isOndisk and foundInWhitelist == -1  then
-      vim.cmd.bwipe({buf.name, bang = true})
-      print("Wiped ==>> ".. buf.name)
-    end
-  end
-
+	for _, buf in ipairs(buffers) do
+		-- Whitelist of buftypes to avoid wiping
+		local whitelist_buf = { "terminal" }
+		local foundInWhitelist = vim.fn.index(whitelist_buf, buf.buftype)
+		local filePath = vim.fn.fnamemodify(buf.name, ":p")
+		local isOndisk = vim.uv.fs_stat(filePath)
+		if not isOndisk and foundInWhitelist == -1 then
+			vim.cmd.bwipe({ buf.name, bang = true })
+			print("Wiped ==>> " .. buf.name)
+		end
+	end
 end, { nargs = "*" })
 
 --  Get lsp diagnostics
