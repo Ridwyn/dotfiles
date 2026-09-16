@@ -21,19 +21,18 @@ end
 vim.api.nvim_create_user_command("Term", function(cmd_args)
 	local args = vim.trim(cmd_args.args)
 
-	local cmd = "mvn " .. args
+	local cmd =  args
 	if args:sub(1, 1) == "'" then
 		if args:sub(args:len()) ~= "'" then
 			vim.cmd('echohl ErrorMsg | echo " mising closing \'" | echohl None')
       return
 		else
       -- this is safe todo since ' is exactly 1 byte so we can safely chop 1 byte on both ends
-      local cleancmd = args:match(2, -2)
+      local cleancmd = args:sub(2, -2)
 			create_terminal_and_sendcmd(cleancmd)
       return
 		end
 	end
-
 	create_terminal_and_sendcmd(cmd)
 end, { nargs = "*" })
 
