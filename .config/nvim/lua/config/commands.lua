@@ -12,25 +12,84 @@ vim.api.nvim_create_user_command("LspLog", function(_)
 	vim.cmd("e " .. vim.lsp.log.get_filename())
 end, { nargs = "*" })
 
-local function create_terminal_and_sendcmd(cmd)
-	local buf = vim.api.nvim_create_buf(false, true)
-	vim.cmd("split | b" .. buf .. " | terminal")
-	vim.fn.chansend(vim.b[buf].terminal_job_id, cmd .. "\n")
+
+
+--Scract command  
+vim.api.nvim_create_user_command("Scratch", function(cmd_args)
+  local name = "Scratch"
+  if cmd_args.args ~= nil then
+    name = cmd_args.args[0]
+  end
+	local buf = vim.api.nvim_create_buf(true, true)
+  vim.api.nvim_buf_set_name(buf, "Scratch")
+	vim.cmd("split | b" .. buf )
+
+end, { nargs = "*" })
+
+
+local function strip_ansi(str)
+	-- Matches the ESC character (\27 or \x1b) followed by standard ANSI control sequences
+	return str:gsub("\27%[%d+;?%d*m", ""):gsub("\27%[[%d;]*[A-Za-z]", "")
 end
+
+local function create_terminal_and_sendcmd(cmd, isMakeCmd)
+	local buf = vim.api.nvim_create_buf(true, false)
+	-- vim.cmd("split | b" .. buf .. " | terminal")
+	-- vim.fn.chansend(vim.b[buf].terminal_job_id, cmd .. "\n")
+
+	local tempfile = vim.fn.tempname()
+	local fullcmd = cmd .. " 2&>1 | tee  " .. tempfile
+	vim.cmd("split | b" .. buf)
+	vim.fn.jobstart(fullcmd, {
+		term = true,
+		on_exit = function()
+			-- set quickfix if :Make is MAKE
+			if isMakeCmd then
+				print(fullcmd)
+				vim.schedule(function()
+					local lines = vim.fn.readfile(tempfile)
+					local qflist = {}
+					for _, line in ipairs(lines) do
+						local l = strip_ansi(line)
+						table.insert(qflist, { text = l })
+					end
+					-- Populate the quickfix list
+					vim.fn.setqflist(qflist)
+
+					-- Open the quickfix window automatically if items were added
+					if #qflist > 0 then
+						vim.cmd("copen")
+					end
+				end)
+			end
+		end,
+	})
+end
+
+--Make command to 
+vim.api.nvim_create_user_command("Make", function(cmd_args)
+	-- 1. Get the configured makeprg (defaults to buffer-local, falls back to global)
+	local makeprg = vim.bo.makeprg
+	if makeprg == "" then
+		makeprg = vim.o.makeprg
+	end
+	create_terminal_and_sendcmd(makeprg .. cmd_args.args, true)
+end, { nargs = "*" })
+
 --Term command cleaner way to :sp | term
 vim.api.nvim_create_user_command("Term", function(cmd_args)
 	local args = vim.trim(cmd_args.args)
 
-	local cmd =  args
+	local cmd = args
 	if args:sub(1, 1) == "'" then
 		if args:sub(args:len()) ~= "'" then
 			vim.cmd('echohl ErrorMsg | echo " mising closing \'" | echohl None')
-      return
+			return
 		else
-      -- this is safe todo since ' is exactly 1 byte so we can safely chop 1 byte on both ends
-      local cleancmd = args:sub(2, -2)
+			-- this is safe todo since ' is exactly 1 byte so we can safely chop 1 byte on both ends
+			local cleancmd = args:sub(2, -2)
 			create_terminal_and_sendcmd(cleancmd)
-      return
+			return
 		end
 	end
 	create_terminal_and_sendcmd(cmd)
