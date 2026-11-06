@@ -1,10 +1,9 @@
 function oilKeyBinding()
+	local map = vim.keymap.set
+	local opts = { noremap = true, silent = true }
 
-        local map = vim.keymap.set
-        local opts = { noremap = true, silent = true }
-
-        -- FzfLua keymaps in normal and ex mode
-        map({ "n", "x" },   "<leader>o",  "<cmd>Oil<cr>", opts)
+	-- FzfLua keymaps in normal and ex mode
+	map({ "n", "x" }, "<leader>o", "<cmd>Oil<cr>", opts)
 end
 
 return {
@@ -18,7 +17,7 @@ return {
 	-- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
 	lazy = false,
 	config = function()
-        oilKeyBinding();
+		oilKeyBinding()
 
 		require("oil").setup({
 			-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
@@ -96,6 +95,35 @@ return {
 				["gx"] = "actions.open_external",
 				["g."] = { "actions.toggle_hidden", mode = "n" },
 				["g\\"] = { "actions.toggle_trash", mode = "n" },
+				["gz"] = {
+					desc = "actions.toggle_trash",
+					mode = "n",
+					callback = function()
+            local oil = require("oil")
+            -- Correctly fetch the current buffer and cursor line numbers
+            local bufnr = vim.api.nvim_get_current_buf()
+            local lnum = vim.api.nvim_win_get_cursor(0)[1]
+            local entry = oil.get_entry_on_line(bufnr, lnum)
+            if not entry or entry.type ~= "file" then return end
+
+            -- check for zip or jar extension
+            local name = entry.name:lower()
+            if vim.endswith(name, ".zip") or vim.endswith(name, ".jar") then
+              local current_dir = oil.get_current_dir()
+              local filepath = current_dir .. entry.name
+
+              -- Execute system unzip command
+              vim.fn.jobstart({ "unzip", "-o", filepath, "-d", current_dir }, {
+                on_exit = function ()
+                  -- Refresh the oil buffer to show extracted files
+                  print("Extracted ".. filepath)
+                  oil.close()
+                  oil.open(current_dir)
+                end
+              })
+            end
+          end,
+				},
 			},
 			-- Set to false to disable all of the above keymaps
 			use_default_keymaps = true,
@@ -226,4 +254,3 @@ return {
 		})
 	end,
 }
-
